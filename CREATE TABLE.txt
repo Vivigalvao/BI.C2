@@ -1,0 +1,35 @@
+00_create_schema_stg.sql
+CREATE SCHEMA IF NOT EXISTS stg;
+00_create_schema_dw.sql
+CREATE SCHEMA IF NOT EXISTS dw;
+00_create_dim_tempo.sql
+CREATE TABLE dw.dim_tempo (
+    sk_tempo INTEGER PRIMARY KEY,
+    data DATE,
+    dia SMALLINT,
+    mes SMALLINT,
+    ano SMALLINT,
+    trimestre SMALLINT,
+    nome_mes VARCHAR(15),
+    dia_semana VARCHAR(15),
+    ano_mes CHAR(7),
+    eh_fim_de_semana BOOLEAN,
+    semana_epidemiologica SMALLINT
+);
+
+INSERT INTO dw.dim_tempo (
+    sk_tempo,
+    data,
+    nome_mes,
+    dia_semana,
+    ano_mes,
+    eh_fim_de_semana
+)
+VALUES (
+    -1,
+    NULL,
+    'Desconhecido',
+    'Desconhecido',
+    'N/D',
+    FALSE
+);
